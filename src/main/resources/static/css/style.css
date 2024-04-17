@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+/*.main{
+	margin-top: 20px;
+	width: 100%;
+    border:1px solid rgb(192, 192, 192);
+    border-radius: 10px;
+    box-sizing:border-box;
+*/
+
 .header{
 	padding-bottom: 20px;
 	border-bottom: 2px solid rgb(0, 249, 0);
@@ -8,4 +16,13 @@
 
 .menu-button{
 	padding-top: 200px;
+}
+
+.url1,
+.page1,
+.url3,
+.page3,
+.url5,
+.page5{
+	background-color: rgba(187, 188, 189,0.2) !important;
 }
