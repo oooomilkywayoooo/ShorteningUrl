@@ -28,6 +28,7 @@ public class InputController {
 	
 	@PostMapping("/input")
 	public String input(InputForm form) {
+		
 		 System.out.println(form.toString());
 		 return "output";
 	}
