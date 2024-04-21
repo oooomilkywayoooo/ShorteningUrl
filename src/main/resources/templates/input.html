@@ -37,45 +37,45 @@
 				<h4>URLページ名</h4>
 			</div>
 		</div>
-		<form>
+		<form th:action="@{/input}" method="post" th:object="${inputForm}">
 			<div class="row pt-5">
 				<div class="col">
-					<input class="form-control url1" placeholder="(例)http://～" type="text">
+					<input class="form-control url1" placeholder="(例)http://～" type="text" th:field="*{url1}">
 				</div>
 				<div class="col">
-					<input class="form-control page1" placeholder="(例)3月イベントページ" type="text">
-				</div>
-			</div>
-			<div class="row pt-4">
-				<div class="col">
-					<input class="form-control url2" type="text">
-				</div>
-				<div class="col">
-					<input class="form-control page2" type="text">
+					<input class="form-control page1" placeholder="(例)3月イベントページ" type="text" th:field="*{page1}">
 				</div>
 			</div>
 			<div class="row pt-4">
 				<div class="col">
-					<input class="form-control url3" type="text">
+					<input class="form-control url2" type="text" th:field="*{url2}">
 				</div>
 				<div class="col">
-					<input class="form-control page3" type="text">
-				</div>
-			</div>
-			<div class="row pt-4">
-				<div class="col">
-					<input class="form-control url4" type="text">
-				</div>
-				<div class="col">
-					<input class="form-control page4" type="text">
+					<input class="form-control page2" type="text" th:field="*{page2}">
 				</div>
 			</div>
 			<div class="row pt-4">
 				<div class="col">
-					<input class="form-control url5" type="text">
+					<input class="form-control url3" type="text" th:field="*{url3}">
 				</div>
 				<div class="col">
-					<input class="form-control page5" type="text">
+					<input class="form-control page3" type="text" th:field="*{page3}">
+				</div>
+			</div>
+			<div class="row pt-4">
+				<div class="col">
+					<input class="form-control url4" type="text" th:field="*{url4}">
+				</div>
+				<div class="col">
+					<input class="form-control page4" type="text" th:field="*{page4}">
+				</div>
+			</div>
+			<div class="row pt-4">
+				<div class="col">
+					<input class="form-control url5" type="text" th:field="*{url5}">
+				</div>
+				<div class="col">
+					<input class="form-control page5" type="text" th:field="*{page5}">
 				</div>
 			</div>
 			<div class="row submit-button pt-5 pb-5">
