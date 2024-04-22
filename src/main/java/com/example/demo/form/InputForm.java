@@ -19,22 +19,23 @@ public class InputForm {
 	private String page4;
 	private String page5;
 
-	public Map<String, String> setMap(Map<String, String> urlMap) {
+	public Map<String, String> setMap(Map<String, String> inputMap) {
+		
 		if (this.url1 != null) {
-			urlMap.put(this.url1, this.page1);
+			inputMap.put(this.url1, this.page1);
 		}
 		if (this.url2 != null) {
-			urlMap.put(this.url2, this.page2);
+			inputMap.put(this.url2, this.page2);
 		}
 		if (this.url3 != null) {
-			urlMap.put(this.url3, this.page3);
+			inputMap.put(this.url3, this.page3);
 		}
 		if (this.url4 != null) {
-			urlMap.put(this.url4, this.page4);
+			inputMap.put(this.url4, this.page4);
 		}
 		if (this.url5 != null) {
-			urlMap.put(this.url5, this.page5);
+			inputMap.put(this.url5, this.page5);
 		}
-		return urlMap;
+		return inputMap;
 	}
 }
