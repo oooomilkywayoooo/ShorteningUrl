@@ -11,12 +11,16 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UrlInfoService {
+public class InputService {
 	
 	private final UrlInfoRepository repository;
 	
-	public Optional<UrlInfo> searchShorteningUrlById(String shorteningUrl){
-		return repository.findById(shorteningUrl);
+	public Optional<UrlInfo> searchUrlById(String url){
+		return repository.findById(url);
 	}
+	
+	/*public Optional<UrlInfo> registUrl(InputForm form){
+		
+	}*/
 	
 }
