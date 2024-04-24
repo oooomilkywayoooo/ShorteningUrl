@@ -30,7 +30,8 @@
 			<form action="/access" method="get">
 				<label class="d-block h4" for="yearMonth">登録日を選択</label>
 				<select class="btn-lg" id="yearMonth" name="yearMonth" onchange="this.form.submit()">
-					<option th:each="yearMonth : ${yearMonths}" th:value="${yearMonth}" th:text="${yearMonth}"></option>
+					<option th:value="0">選択して下さい</option>
+					<option th:each="yearMonth : ${yearMonths}" th:value="${yearMonth}" th:text="${yearMonth}">2024-04</option>
 				</select>
 			</form>
 		</div>
