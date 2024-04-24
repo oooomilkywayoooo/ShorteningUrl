@@ -17,7 +17,6 @@ public class UrlInfo {
 	@Column(name="shortening_url")
 	private String shorteningUrl;
 	
-	@Id
 	private String url;
 	
 	@Column(name="page_name")

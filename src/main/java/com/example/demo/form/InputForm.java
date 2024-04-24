@@ -21,19 +21,19 @@ public class InputForm {
 
 	public Map<String, String> setMap(Map<String, String> inputMap) {
 		
-		if (this.url1 != null) {
+		if (!(this.url1.equals(""))) {
 			inputMap.put(this.url1, this.page1);
 		}
-		if (this.url2 != null) {
+		if (!(this.url2.equals(""))) {
 			inputMap.put(this.url2, this.page2);
 		}
-		if (this.url3 != null) {
+		if (!(this.url3.equals(""))) {
 			inputMap.put(this.url3, this.page3);
 		}
-		if (this.url4 != null) {
+		if (!(this.url4.equals(""))) {
 			inputMap.put(this.url4, this.page4);
 		}
-		if (this.url5 != null) {
+		if (!(this.url5.equals(""))) {
 			inputMap.put(this.url5, this.page5);
 		}
 		return inputMap;

@@ -35,59 +35,17 @@
 				<h4>URLページ名</h4>
 			</div>
 		</div>
-		<div class="row pt-5">
+		<div class="row pt-5" th:each="op : ${outputList}">
+
 			<div class="col-md-5">
-				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px" readonly></textarea>
+				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px"
+					readonly>[[${domain} + ${op.shorteningUrl}]]</textarea>
 			</div>
 			<div class="col-md-1">
 				<button type="button" class="btn btn-outline-secondary">コピー</button>
 			</div>
-			<div class="col">
-				<p>ページ名の表示</p>
-			</div>
-		</div>
-		<div class="row pt-4">
-			<div class="col-md-5">
-				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px"></textarea>
-			</div>
-			<div class="col-md-1">
-				<button type="button" class="btn btn-outline-secondary">コピー</button>
-			</div>
-			<div class="col">
-				<p>ページ名の表示</p>
-			</div>
-		</div>
-		<div class="row pt-4">
-			<div class="col-md-5">
-				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px"></textarea>
-			</div>
-			<div class="col-md-1">
-				<button type="button" class="btn btn-outline-secondary">コピー</button>
-			</div>
-			<div class="col">
-				<p>ページ名の表示</p>
-			</div>
-		</div>
-		<div class="row pt-4">
-			<div class="col-md-5">
-				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px"></textarea>
-			</div>
-			<div class="col-md-1">
-				<button type="button" class="btn btn-outline-secondary">コピー</button>
-			</div>
-			<div class="col">
-				<p>ページ名の表示</p>
-			</div>
-		</div>
-		<div class="row pt-4">
-			<div class="col-md-5">
-				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px"></textarea>
-			</div>
-			<div class="col-md-1">
-				<button type="button" class="btn btn-outline-secondary">コピー</button>
-			</div>
-			<div class="col">
-				<p>ページ名の表示</p>
+			<div class="col-md-6">
+				<h4>[[${op.pageName}]]</h4>
 			</div>
 		</div>
 
@@ -95,8 +53,11 @@
 			<div class="col-md-7">
 				<h4>要確認</h4>
 				<div class="form-floating mb-5">
-					<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled"
-						style="height: 200px" disabled></textarea>
+					<brtextarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled"
+						style="height: 200px" disabled>
+						<th:brock th:each="check : ${checkList}">
+							<p th:text="${check}"></p>
+						</th:brock></textarea>
 				</div>
 			</div>
 

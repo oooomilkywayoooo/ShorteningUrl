@@ -1,8 +1,12 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.form.InputForm;
+
+import lombok.RequiredArgsConstructor;
 /**
  * アウトプットコントローラー
  * 
@@ -10,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("/output")
+@RequiredArgsConstructor
 public class OutputController {
 
-	@GetMapping
-	public String view() {
+	@GetMapping("/output")
+	public String view(Model model, InputForm form) {
 		return "/output";
 	}
 	

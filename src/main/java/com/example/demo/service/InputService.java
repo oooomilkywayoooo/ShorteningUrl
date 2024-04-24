@@ -20,9 +20,13 @@ import lombok.RequiredArgsConstructor;
 public class InputService {
 
 	private final UrlInfoRepository repository;
+	
+	public Optional<UrlInfo> searchShorteningUrlById(String shorteningUrl){
+		return repository.findById(shorteningUrl);
+	}
 
-	public Optional<UrlInfo> searchUrlById(String url) {
-		return repository.findById(url);
+	public UrlInfo searchByUrl(String url) {
+		return repository.findByUrl(url);
 	}
 
 	public Map<String, String> registUrl(InputForm form, ArrayList<String> checkList) {
@@ -34,26 +38,34 @@ public class InputService {
 		Map<String, String> outputMap = new HashMap<>(); // 登録済みのランダム文字列とページ名
 		String shorteningUrl = "";		// 生成したランダム文字列
 		
+		System.out.println(form.toString());
 
 		form.setMap(inputMap);
+		
+		System.out.println(inputMap.size());
+		
 
 		for (String key : inputMap.keySet()) {
 
-			// System.out.println(key);
+			System.out.println(key);
 
-			if (!(key.startsWith("http://")) || !(key.startsWith("https://"))) {
-
+			if (!(key.startsWith("http://")) && !(key.startsWith("https://"))) {
+				
 				checkList.add(key);
-				inputMap.remove(key);
+				// inputMap.remove(key);
 			}
 
 		}
 
 		for (Map.Entry<String, String> entry : inputMap.entrySet()) {
+			
+			if(checkList.contains(entry.getKey())) {
+				continue;
+			}
+			
 			UrlInfo urlInfo = null;
-			var exist = repository.findById(entry.getKey());
-			
-			
+			UrlInfo exist = searchByUrl(entry.getKey());
+
 			if(exist == null) {
 				urlInfo = new UrlInfo();
 				shorteningUrl = randomText();		// ランダム文字列生成
@@ -70,7 +82,7 @@ public class InputService {
 				repository.save(urlInfo);
 				
 			}else {
-				urlInfo = exist.get();
+				urlInfo = exist;
 				shorteningUrl = urlInfo.getShorteningUrl();
 				urlInfo.setPageName(entry.getValue());
 				urlInfo.setUpdatedAt(tm);

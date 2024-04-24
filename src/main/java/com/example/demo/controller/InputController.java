@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.UrlInfo;
 import com.example.demo.form.InputForm;
-import com.example.demo.service.UrlInfoService;
+import com.example.demo.service.InputService;
 
 import lombok.RequiredArgsConstructor;
 /**
@@ -22,9 +24,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InputController {
 	
-	private final UrlInfoService service;
+	private final InputService service;
 	
-	Map<String, String> inputMap = new HashMap<>(); // フォームから受け取ったURLとページ名
+	Map<String, String> outputMap = new HashMap<>(); // フォームから受け取ったURLとページ名
+	ArrayList<String> checkList = new ArrayList<>(); // 要確認に表示するURL
 
 	@GetMapping("/input")
 	public String view(Model model, InputForm form) {
@@ -32,9 +35,40 @@ public class InputController {
 	}
 	
 	@PostMapping("/input")
-	public String input(InputForm form) {
-
-		 return "output";
+	public String input(Model model, InputForm form) {
+		
+		outputMap.clear();
+		checkList.clear();
+		
+		outputMap =  service.registUrl(form, checkList);
+		ArrayList<UrlInfo> outputList = new ArrayList<UrlInfo>();
+		String domain = "http://localhost:8080/";
+		String screen = "";
+		
+		if(outputMap == null && checkList == null) {
+			model.addAttribute("errorMsg","変換するURLを入力して下さい");
+			screen = "input";
+		}else {
+			
+			for (Map.Entry<String, String> entry : outputMap.entrySet()) {
+				
+				var exist =  service.searchShorteningUrlById(entry.getKey());
+				
+				if(!(exist.isEmpty())) {
+					outputList.add(exist.get());
+				}
+			}
+			
+			model.addAttribute("domain", domain);
+			model.addAttribute("outputList", outputList);
+			model.addAttribute("checkList", checkList);
+			
+			screen = "output";
+		}
+		
+		return screen; 
 	}
+	
+	
 	
 }
