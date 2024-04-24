@@ -27,18 +27,12 @@
 
 	<div class="container">
 		<div class="row pt-5">
-
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-					aria-expanded="false">
-					登録月を選択
-				</button>
-				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="#">Action</a></li>
-					<li><a class="dropdown-item" href="#">Another action</a></li>
-					<li><a class="dropdown-item" href="#">Something else here</a></li>
-				</ul>
-			</div>
+			<form action="/access" method="get">
+				<label class="d-block h4" for="yearMonth">登録日を選択</label>
+				<select class="btn-lg" id="yearMonth" name="yearMonth" onchange="this.form.submit()">
+					<option th:each="yearMonth : ${yearMonths}" th:value="${yearMonth}" th:text="${yearMonth}"></option>
+				</select>
+			</form>
 		</div>
 
 		<div class="row pt-5 px-5">
@@ -52,23 +46,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
+					<tr th:each="entity : ${entities}">
+						<td th:text="${#dates.format(entity.createdAt, 'yyyy-MM-dd')}"></td>
+						<td th:text="${entity.shorteningUrl}"></td>
+						<td th:text="${entity.pageName}"></td>
+						<td th:text="${entity.accessCount}"></td>
 					</tr>
 				</tbody>
 			</table>
