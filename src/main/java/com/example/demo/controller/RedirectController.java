@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * リダイレクトコントローラー
  * 
- * @author menu
+ * @author redirect
  *
  */
 @Controller

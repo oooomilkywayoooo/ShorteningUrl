@@ -4,18 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
- * メニューコントローラー
+ * 管理者ログインコントローラー
  * 
- * @author menu
+ * @author login
  *
  */
 @Controller
-@RequestMapping("/menu")
-public class MenuController {
+@RequestMapping("/")
+public class LoginController {
 
 	@GetMapping
 	public String view() {
-		return "/menu";
+		return "/login";
 	}
 	
 }

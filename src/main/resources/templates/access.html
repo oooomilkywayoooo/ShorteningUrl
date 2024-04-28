@@ -21,7 +21,7 @@
 					<h4>アクセス数確認画面</h4>
 				</div>
 				<div class="col-md-3">
-					<h4 class="text-end"><a th:href="@{/}">TOP</a></h4>
+					<h4 class="text-end"><a th:href="@{/menu}">TOP</a></h4>
 				</div>
 			</div>
 	</header>
@@ -30,8 +30,8 @@
 		<div class="row pt-5">
 			<form id="accessForm" action="/access" method="get">
 				<label class="d-block h4" for="yearMonth">登録日を選択</label>
-				<select class="btn-lg" id="yearMonth" name="yearMonth" onchange="this.form.submit()">
-					<option th:value="0">選択して下さい</option>
+				<select class="setOptionSelected btn-lg" id="yearMonth" name="yearMonth" onchange="this.form.submit()">
+					<option th:value="0" selected>選択して下さい</option>
 					<option th:each="yearMonth : ${yearMonths}" th:value="${yearMonth}" th:text="${yearMonth}">2024-04</option>
 				</select>
 			</form>
@@ -59,7 +59,16 @@
 
 		</div>
 	</div>
-
+	<script>
+		// URL直打ち禁止
+		window.onload = function() {	
+			if (document.referrer === "") {
+				// 直接アクセスされた場合の処理
+				alert("直接アクセスは禁止されています。");
+				window.location.href = "http://localhost:8080/"; // リダイレクト先のURLに変更してください
+			}
+		}
+	</script>
 </body>
 
 </html>

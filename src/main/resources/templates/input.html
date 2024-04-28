@@ -20,7 +20,7 @@
 					<h4>短縮URL作成画面</h4>
 				</div>
 				<div class="col-md-3">
-					<h4 class="text-end"><a th:href="@{/}">TOP</a></h4>
+					<h4 class="text-end"><a th:href="@{/menu}">TOP</a></h4>
 				</div>
 			</div>
 	</header>
@@ -85,6 +85,16 @@
 				</div>
 			</div>
 		</form>
+		<script>
+			// URL直打ち禁止
+		window.onload = function() {
+			if (document.referrer === "") {
+				// 直接アクセスされた場合の処理
+				alert("直接アクセスは禁止されています。");
+				window.location.href = "http://localhost:8080/"; // リダイレクト先のURLに変更してください
+			}
+		}
+	</script>
 </body>
 
 </html>

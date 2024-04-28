@@ -27,12 +27,22 @@
 
 	<div class="container main">
 		<div class=" row menu-button">
-			<div class="d-grid gap-2 col-2 mx-auto my-auto">
-				<a th:href="@{/input}" class="btn btn-outline-success btn-lg py-3 mb-5">短縮URL作成</a>
-				<a th:href="@{/access}" class="btn btn-outline-success btn-lg py-3">アクセス数確認</a>
+			<div class="d-grid gap-2 col-2 mx-auto my-outo">
+				<a th:href="@{/input}" class="btn btn-outline-success btn-lg mx-outo mb-5">短縮URL作成</a>
+				<a th:href="@{/access}" class="btn btn-outline-success btn-lg mx-outo">アクセス数確認</a>
 			</div>
 		</div>
 	</div>
+	<script>
+		// URL直打ち禁止
+		window.onload = function() {
+			if (document.referrer === "") {
+				// 直接アクセスされた場合の処理
+				alert("直接アクセスは禁止されています。");
+				window.location.href = "http://localhost:8080/"; // リダイレクト先のURLに変更してください
+			}
+		}
+	</script>
 </body>
 
 </html>

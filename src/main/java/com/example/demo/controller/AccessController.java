@@ -28,18 +28,18 @@ public class AccessController {
 	 * @param model
 	 * @return アクセス確認画面
 	 */
+
 	@GetMapping("/access")
 	public String showRegistrationDates(@RequestParam(name = "yearMonth", required = false) String yearMonth,
 			Model model) {
-
+		// 選択された値を処理
+				if (yearMonth != null) {
+					List<UrlInfo> entities = service.getEntitiesByYearMonth(yearMonth);
+					model.addAttribute("entities", entities);
+				}
+		
 		List<String> yearMonths = service.getAllYearMonths();
 		model.addAttribute("yearMonths", yearMonths);
-
-		// 選択された値を処理
-		if (yearMonth != null) {
-			List<UrlInfo> entities = service.getEntitiesByYearMonth(yearMonth);
-			model.addAttribute("entities", entities);
-		}
 
 		return "/access";
 	}
