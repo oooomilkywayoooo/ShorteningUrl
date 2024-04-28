@@ -38,11 +38,10 @@
 		<div class="row pt-5" th:each="op : ${outputList}">
 
 			<div class="col-md-5">
-				<textarea class="form-control" placeholder="変換後URL" id="floatingTextarea" style="height: 20px"
-					readonly>[[${domain} + ${op.shorteningUrl}]]</textarea>
+				<input class="form-control input-lg" id="copyTarget" type="text" th:value="${domain} + ${op.shorteningUrl}" readonly>
 			</div>
 			<div class="col-md-1">
-				<button type="button" class="btn btn-outline-secondary">コピー</button>
+				<button onclick="copyToClipboard()" type="button" class="btn btn-outline-secondary">コピー</button>
 			</div>
 			<div class="col-md-6">
 				<h4>[[${op.pageName}]]</h4>
