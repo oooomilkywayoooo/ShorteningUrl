@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -68,7 +69,7 @@ public class InputController {
 		String domain = "http://localhost:8080/";
 		String screen = "";
 		
-		if(outputMap == null && checkList == null) {
+		if(outputMap.isEmpty() && CollectionUtils.isEmpty(checkList)) {
 			String errorMsg = AppCommon.getMessage(messageSource, MessageConst.INPUT_NULL);
 			model.addAttribute("errorMsg",errorMsg);
 			screen = "input";
